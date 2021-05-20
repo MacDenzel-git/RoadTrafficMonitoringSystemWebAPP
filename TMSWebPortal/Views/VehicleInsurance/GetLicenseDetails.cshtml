@@ -1,0 +1,148 @@
+﻿@model TMSWebPortal.Models.LicenseViewModel
+
+@{
+    ViewData["Title"] = "GetLicenseDetails";
+}
+
+
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+
+                <div class="col-md-4 mb-4">
+                </div>
+
+                <div class="col-md-5 mb-4">
+                    <div class="outer-div">
+                        <div class="card">
+                            <div class="card-body col-md-12">
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.LicenseNumber)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.LicenseNumber)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Trn)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Trn)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.FirstIssue)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.FirstIssue)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.DateIssued)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.DateIssued)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.ExpiryDate)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.ExpiryDate)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.CountryIssued)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.CountryIssued)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.LicenseCode)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.LicenseCode)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.VehicleRestriction)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.VehicleRestriction)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.DriverRestriction)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.DriverRestriction)
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.IssueNumber)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.IssueNumber)
+
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Firstname)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Firstname)
+
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Lastname)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Lastname)
+
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PhoneNumber)
+
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.VehicleRestriction)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.VehicleRestriction)
+
+
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.LicenseCode)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.LicenseCode)
+
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.FirstIssue)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.FirstIssue)
+
+                                    </dd>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.ExpiryDate)
+                                    </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.ExpiryDate)
+
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="text-center">
+                                <a asp-action="Index" asp-controller="Home" class="btn btn-raised btn-success">Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+            </div>
+        </div>
+    </div>
+</div>
+</div>

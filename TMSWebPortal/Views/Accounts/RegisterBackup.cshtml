@@ -1,0 +1,147 @@
+﻿@model TMSWebPortal.DTO.UserDTO
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LayoutBeforeLogin.cshtml";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/94c48f9105.js" crossorigin="anonymous"></script>
+<h1>Register</h1>
+<div class="row">
+    <div class="col-10">
+        <h6 class="h4-title text-danger"> Please note that Email entered here will be your username</h6>
+    </div>
+    <div class="col-2">
+        <div class="form-group">
+            <a class="btn" asp-action="Login" style="background-color: #8d6666 !important;color: white;"> Login instead</a>
+        </div>
+    </div>
+    
+    </div>
+
+<hr class="mb-0 mt-0" />
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-action="Register">
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="card bg-light">
+                    <div class="card-body text-center pl-0 pr-0">
+                        <h5 class="card-title text-danger"><i class="fas fa-exclamation-circle"></i></h5>
+                        <p class="h4-title text-danger"><div asp-validation-summary="ModelOnly" class="h4-title text-danger"></div> </p>
+                        <span asp-validation-for="Age" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+            }
+
+
+            <div class="form-group">
+                <label asp-for="BranchId" class="control-label"></label>
+                <select asp-for="BranchId" class="form-control form-control-sm" required
+                        asp-items="@(new SelectList(Model.Branches, "BranchId", "BranchName") )"></select>
+                <span asp-validation-for="BranchId" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="PositionId" class="control-label"></label>
+                <select asp-for="PositionId" class="form-control form-control-sm" required
+                        asp-items="@(new SelectList(Model.Positions, "PositionId", "PositionName") )"></select>
+                <span asp-validation-for="PositionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" value="" type="date" />
+                <br />
+                <span class="text-secondary"> Date Format: date/month/year - e.g. 01/26/1993 </span>
+
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" type="number" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EmailAddress" class="control-label"></label>
+                <input asp-for="EmailAddress" class="form-control" type="email" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-danger" id="btnSubmit" />
+            </div>
+
+        </form>
+    </div>
+    <div class="col-md-4" style="padding-top: 42px;">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h5 class="card-title text-danger"><i class="fas fa-info" style="font-size: 35px;"></i></h5>
+                <p class="card-text">Welcome to TMS, Once you register, Your Account will be activated by the Administrator. Thank you for you patience </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {
+            var password = $("#txtPassword").val();
+            var confirmPassword = $("#txtConfirmPassword").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
+</script>
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker({
+
+            changeMonth: true,
+            changeYear: true,
+
+            yearRange: "1942:1997"
+        });
+    });
+</script>
+

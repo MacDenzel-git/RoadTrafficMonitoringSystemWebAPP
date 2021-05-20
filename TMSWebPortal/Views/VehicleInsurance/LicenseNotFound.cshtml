@@ -1,0 +1,52 @@
+﻿@model TMSWebPortal.Models.OutputHandler
+
+@{
+    ViewData["Title"] = "LicenseNotFound";
+}
+
+
+
+<div class="row">
+
+    <div class="col-md-1 mb-4">
+    </div>
+
+    <div class="col-md-10 mb-4">
+        <div class="outer-div">
+            <div class="card">
+                <div class="card-body col-md-12" style="line-height: 33px;">
+
+                    <div>
+                        <h4 class="h4-title">RESPONSE</h4>
+                        <p style="background-color:red;" class="text-center"></p>
+                        <hr />
+                        <dl class="dl-horizontal">
+
+                            <dt class="font-weight-bold">
+                                @Html.DisplayNameFor(model => model.Message):
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Message)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <a class="btn btn-raised btn-success" asp-action="Index" asp-controller="Home">Home</a>
+
+                    <a class="btn btn-raised btn-success btn-sm waves-float" asp-action="GetCrimes" asp-controller="Crimes" asp-route-checkType="L" asp-route-id="@Model.Identifier">
+                        Get Crimes
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-1 mb-4">
+    </div>
+</div>

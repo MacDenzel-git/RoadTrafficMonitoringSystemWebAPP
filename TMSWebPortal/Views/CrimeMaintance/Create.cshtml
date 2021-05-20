@@ -1,0 +1,48 @@
+﻿@model TMSWebPortal.DTO.CrimeMantainainceDTO
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">List of Crimes</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @*<div class="form-group">
+                        <label asp-for="CrimeChargeId" class="control-label"></label>
+                        <input asp-for="CrimeChargeId" class="form-control" />
+                        <span asp-validation-for="CrimeChargeId" class="text-danger"></span>
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="CrimeName" class="control-label"></label>
+                        <input asp-for="CrimeName" class="form-control" />
+                        <span asp-validation-for="CrimeName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Charge" class="control-label"></label>
+                        <input asp-for="Charge" class="form-control" />
+                        <span asp-validation-for="Charge" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        Is Crime Active? <input asp-for="IsActive" class="pl-1" /> @**@
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+ </div>
+</div>

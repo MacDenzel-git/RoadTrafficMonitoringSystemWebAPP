@@ -1,0 +1,82 @@
+﻿@model TMSWebPortal.DTO.VehicleInsuranceDTO
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Details</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Vehicle Id :</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label> @Html.DisplayFor(model => model.VehicleId)</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Registration Number :</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label> @Html.DisplayFor(model => model.RegistrationNumber)</label>
+                        </div>
+                        <br />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Expiry Date :</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label> @Html.DisplayFor(model => model.ExpiryDate)</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Is Active :</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label> @Html.DisplayFor(model => model.IsActive)</label>
+                        </div>
+                        <br />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Date Effective :</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label> @Html.DisplayFor(model => model.DateEffective)</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Issued By :</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label> @Html.DisplayFor(model => model.IssuedBy)</label>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="text-center">
+                        <a asp-action="Index" class="btn btn-outline-dark btn-sm"><i class="material-icons">arrow_left</i>&nbsp;Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>

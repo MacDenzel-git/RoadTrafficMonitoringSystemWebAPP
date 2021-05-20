@@ -1,0 +1,131 @@
+﻿@model TMSWebPortal.DTO.DriverLicenseDTO
+
+@{
+    ViewData["Title"] = "ManageUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@*<button  class="">
+        <i asp-action="Create" asp-controller="Sermons" class="zmdi zmdi-plus"></i>Add Sermon
+    </button>*@
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Delete License</h4>
+                </div>
+                <div class="card-body">
+                    
+                    <form asp-action="Delete" method="post">
+                        <div class="card-body">
+                            <div class="text-right">
+                                <a asp-action="Index" class="btn btn-outline-primary btn-sm"><i class="glyphicon-arrow-left"></i>&nbsp;Back</a>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> License Number :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.LicenseCode)</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> TRN :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.Trn)</label>
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> First Issue :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.FirstIssue)</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> Date Issue :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.DateIssued)</label>
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> Expiry Date :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.ExpiryDate)</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> Country Issued :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.CountryIssued)</label>
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> License Code :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.LicenseCode)</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> Vehicle Restriction :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.VehicleRestriction)</label>
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> Issue Number :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.IssueNumber)</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="text-primary"> Driver Restriction :</label>
+                                </div>
+                                <div class="col-lg-3 text-left">
+                                    <label> @Html.DisplayFor(model => model.DriverRestriction)</label>
+                                </div>
+                            </div>
+                            <br />
+                            <button type="submit" class="btn btn-outline-danger btn-sm"><i class="material-icons">delete</i>&nbsp;Delete</button>
+                            <a asp-action="Index" class="btn btn-outline-dark btn-sm"><i class="material-icons">cancel</i>&nbsp;Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END DATA TABLE -->
+    </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>

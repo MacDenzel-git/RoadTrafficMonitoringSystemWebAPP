@@ -1,0 +1,62 @@
+﻿@model TMSWebPortal.Models.InsurancePool.VehicleInsurance
+
+@{
+    ViewData["Title"] = "CrimeCommittedPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+
+                    <div class="col-md-2 mb-4">
+                    </div>
+
+                    <div class="col-md-8 mb-4">
+                        <div class="outer-div">
+                            <div class="card">
+                                <div class="card-body col-md-12">
+                                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                        <thead class="index-thead">
+                                            <tr>
+                                                <th class="btn-column-hdr-60">ID</th>
+                                                <th>Message</th>
+                                                <th class="btn-column-hdr-150"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <td>Response: @Html.DisplayFor(modelItem => modelItem.Message)</td>
+                                                <td>Registration Number:@Html.DisplayFor(modelItem => modelItem.Identifier)</td>
+                                                <td >
+                                                    <form asp-action="GetCrimes" asp-controller="Crimes" asp-route-id="@Html.DisplayFor(modelItem => modelItem.Identifier)">
+                                                        <input asp-for="Identifier" />
+                                                    </form>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">
+                                        <a class="btn btn-raised btn-success btn-sm waves-float" asp-action="GetCrimes" asp-controller="Crimes">
+                                            Home
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

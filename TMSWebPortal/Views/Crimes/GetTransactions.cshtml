@@ -1,0 +1,158 @@
+﻿@model IEnumerable<TMSWebPortal.Models.TMS.TrafficMonitorTransactions>
+
+@{
+    //ViewData["Title"] = "GetTransactions";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    // Layout = null;
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+
+
+
+
+
+<!-- END STATISTIC-->
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-11">
+            <div class="card">
+                <div class=" card-header card-header-primary">
+                    <h4 class=" card-title ">All Crimes</h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-danger">Provide Both Dates: When one Date is not provided the system ignores the Range(Format:date/month/year - e.g. 01/26/1993)</p>
+                    <form asp-action="GetTransactions" method="post">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label   class="control-label"></label>
+                                <input  id="startDate" name="startDate" class="form-control" type="date" />
+                              
+                                 
+
+
+                            </div>
+                            <div class="col-md-4">
+                                <label  class="control-label"></label>
+                                <input id="endDate" name="endDate" class="form-control" type="date" />
+                                
+                                
+
+
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button type="submit" class="btn btn-outline-success btn-sm"><i class="fas fa-search"> </i>&nbsp;Filter</button>
+                                <a asp-action="GetTransactions" class="btn btn-outline-success btn-sm"><i class="fa fa-refresh"></i>&nbsp;Refresh</a>
+
+                            </div>
+                          
+                        </div>
+                    </form>
+                    <hr />
+                    <table id="example" class="display nowrap table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+
+                                <th>
+                                    Crime
+                                </th>
+                                <th>
+                                    Charged By
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    License#
+                                </th>
+                                <th>
+                                    Registration#
+                                </th>
+                                <th>
+                                    Fee
+                                </th>
+                                <th>
+                                    Paid
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CrimeName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateCreated)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LicenseNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VehicleRegistrationNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CrimeCharge)
+                                    </td>
+
+                                    @if (item.Paid)
+                                    {
+                                        <td>Yes</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>No</td>
+                                    }
+
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/Javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script type="text/Javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<script type="text/Javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/Javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/Javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/Javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });</script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker({
+
+            changeMonth: true,
+            changeYear: true,
+
+            yearRange: "1942:1997"
+        });
+    });
+</script>

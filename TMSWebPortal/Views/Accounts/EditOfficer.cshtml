@@ -1,0 +1,157 @@
+﻿@model TMSWebPortal.DTO.UserDTO
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@*<button  class="">
+        <i asp-action="Create" asp-controller="Sermons" class="zmdi zmdi-plus"></i>Add Sermon
+    </button>*@
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                
+                <form asp-action="EditOfficer" method="post">
+                    <div class="card ">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">Edit</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label asp-for="BranchId" class="control-label"></label>
+                                            <select asp-for="BranchId" class="form-control form-control-sm" required
+                                                    asp-items="@(new SelectList(Model.Branches, "BranchId", "BranchName") )"></select>
+                                            <span asp-validation-for="BranchId" class="text-danger"></span>
+
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="PositionId" class="control-label"></label>
+                                            <select asp-for="PositionId" class="form-control form-control-sm" required
+                                                    asp-items="@(new SelectList(Model.Positions, "PositionId", "PositionName") )"></select>
+                                            <span asp-validation-for="PositionId" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label asp-for="FirstName" class="control-label"></label>
+                                            <input asp-for="FirstName" class="form-control" />
+                                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                                            <label asp-for="LastName" class="control-label"></label>
+                                            <input asp-for="LastName" class="form-control" />
+                                            <span asp-validation-for="LastName" class="text-danger"></span>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label asp-for="DateOfBirth" class="control-label"></label>
+                                            @Html.TextBoxFor(x => x.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+
+                                            <br />
+                                            <span class="text-secondary"> Date Format: date/month/year - e.g. 01/26/1993 </span>
+
+                                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label asp-for="PhoneNumber" class="control-label"></label>
+                                            <input asp-for="PhoneNumber" class="form-control" type="number" />
+                                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label asp-for="EmailAddress" class="control-label"></label>
+                                            <input asp-for="EmailAddress" class="form-control" type="email" />
+                                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label asp-for="Password" class="control-label"></label>
+                                            <input type="password" asp-for="Password" class="form-control" />
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label asp-for="ConfirmPassword" class="control-label"></label>
+                                            <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                            <input asp-for="PersonalDetailsId" hidden />
+                                        </div>
+                                       
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-outline-success btn-sm"><i class="material-icons">save</i>&nbsp;Save</button>
+                            <a asp-action="ManageOfficer" class="btn btn-outline-primary btn-sm"><i class="mate  rial-icons">cancel</i>&nbsp;Cancel</a>
+                            <a asp-action="DeleteUser" asp-route-personId="@Model.PersonalDetailsId" class="btn btn-outline-danger btn-sm"><i class="material-icons">cancel</i>&nbsp;Delete</a>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
+
+
+        </div>
+ 
+    </div>
+
+ 
+
+</div>
+
+<script>
+    function GetLicense() {
+
+        document.getElementById("txtIdentifier").value = document.getElementById("txtLicense").value
+        document.getElementById("LicenseRN").value = document.getElementById("RN").value
+
+    }
+</script>
+
+<script>
+    function GetVehicle() {
+
+        document.getElementById("txtRegIdentifier").value = document.getElementById("txtRegNum").value
+    }
+</script>
+
+<script>
+    function GetLicenseForCharge() {
+
+        document.getElementById("txtIdentifier2").value = document.getElementById("txtLicense2").value
+        document.getElementById("LicenseRN2").value = document.getElementById("RN2").value
+    }
+</script>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>

@@ -1,0 +1,77 @@
+﻿@model TMSWebPortal.DTO.CrimeMantainainceDTO
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">List of Crimes</h4>
+            </div>
+            <div class="card-body">
+                <div class="text-right">
+                    <a class="btn btn-raised btn-success mb-2" asp-action="Create" asp-controller="CrimeMaintance">Add Crime</a>
+                </div>
+
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="CrimeName" class="control-label"></label>
+                        <input asp-for="CrimeName" class="form-control" />
+                        <span asp-validation-for="CrimeName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Charge" class="control-label"></label>
+                        <input asp-for="Charge" class="form-control" />
+                        <span asp-validation-for="Charge" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>
+
+                        </label>
+                        <div class="checkbox">
+                            <input asp-for="CrimeChargeId" value="@Model.CrimeChargeId" hidden />
+                            Is Crime Active? <input asp-for="IsActive" class="pl-1" /> @**@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-success btn-sm"><i class="material-icons">save</i>&nbsp;Save</button>
+                        <a asp-action="Index" class="btn btn-outline-primary btn-sm"><i class="mate  rial-icons">cancel</i>&nbsp;Cancel</a>
+                        <a asp-action="Delete" asp-route-Id="@Model.CrimeChargeId" class="btn btn-outline-danger btn-sm"><i class="material-icons">cancel</i>&nbsp;Delete</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>

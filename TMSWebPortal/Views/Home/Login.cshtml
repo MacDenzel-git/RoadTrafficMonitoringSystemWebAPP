@@ -1,0 +1,62 @@
+﻿@model TMSWebPortal.Models.LoginViewModel
+
+@{
+    Layout = "~/_LayoutBeforeLogin.cshtml";
+    ViewData["Title"] = "Login";
+    @ViewBag.error
+ 
+}
+
+<form asp-action="Authenticate">
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+
+                    <div class="col-md-4 mb-4">
+                    </div>
+
+                    <div class="col-md-5 mb-4">
+                        <div class="outer-div">
+                            <div class="card">
+                                <div class="card-body col-md-12" style="line-height: 33px;">
+                                    <p class="h4-title">Traffic Monitoring system</p>
+                                    <p style="color:red;">@Model.Message</p>
+                                    <br />
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Enter Phone Number</label>
+                                        <input asp-for="Username" type="tel" class="form-control" id="txtPhoneNumber" required>
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Enter Password</label>
+                                        <input asp-for="Password" type="password" class="form-control" id="txtPinNumber" required>
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+
+                                    </div>
+                                    <button asp-action="login" asp-controller="Accounts" type="submit" class="btn btn-raised btn-primary">Login</button>
+                                    <div class="login-powered">
+                                        <div class="text-center">
+                                            <p>
+                                                Not a member?
+                                                <a href="">Register</a>
+                                            </p>
+                                            <p>Or <a href="">Recover pin</a></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

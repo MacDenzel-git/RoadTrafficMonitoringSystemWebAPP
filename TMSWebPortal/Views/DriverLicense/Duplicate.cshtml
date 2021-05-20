@@ -1,0 +1,62 @@
+﻿@model TMSWebPortal.Models.OutputHandler
+
+@{
+    ViewData["Title"] = "ManageUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@*<button  class="">
+        <i asp-action="Create" asp-controller="Sermons" class="zmdi zmdi-plus"></i>Add Sermon
+    </button>*@
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                   <div class="row">
+                       <div class="col-4">
+                           <h4 class="card-title">Available Licenses</h4>
+                       </div>
+                       <div class="col-8">
+                           @*<div class="text-right">
+                               <a class="btn btn-raised btn-success mb-2" asp-action="ManageUsers" asp-controller="Accounts">Back</a>
+                           </div>*@
+                       </div>
+                   </div>
+                    
+                </div>
+                <div class="card-body">
+                    <div class="text-right">
+                        <a class="btn btn-raised btn-success mb-2" asp-action="ManageUsers" asp-controller="Accounts">Back</a>
+                    </div>
+                    <div class="card bg-light">
+                        <div class="card-body text-center pl-0 pr-0">
+                            <h5 class="card-title text-danger"><i class="fas fa-exclamation-circle"></i></h5>
+                            <p class="h4-title text-danger">   @Html.DisplayFor(model => model.Message)</div> </p>
+                        </div>
+                    </div>
+              
+                </div>
+            </div>
+        </div>
+        <!-- END DATA TABLE -->
+    </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>

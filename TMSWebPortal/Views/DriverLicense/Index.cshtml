@@ -1,0 +1,103 @@
+﻿@model TMSWebPortal.DTO.DriversLicenseVM
+
+@{
+    ViewData["Title"] = "ManageUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Available Licenses</h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-right">
+                        <a class="btn btn-raised btn-success mb-2" asp-action="ManageUsers" asp-controller="Accounts">Add License</a>
+                    </div>
+
+                    @if (Model.Message != null)
+                    {
+                        <div class="card-body">
+                            <div class="card bg-light">
+                                <div class="card-body text-center pl-0 pr-0">
+                                    <h5 class="card-title text-danger"><i class="fas fa-exclamation-circle"></i></h5>
+                                    <p class="h4-title text-success">   @Html.DisplayFor(model => model.Message)
+                                </div> 
+                            </div>
+                        </div>
+
+
+                    }
+                    <table id="table_id" class="display">
+                        <thead style="font-size: 14px;">
+                            <tr>
+                                <th class="text-primary">
+                                    License Number
+                                </th>
+                                <th class="text-primary">
+                                    TRN
+                                </th>
+                                <th class="text-primary">
+                                    Date Issued
+                                </th>
+                                <th class="text-primary">
+                                    Expiry Date
+                                </th>
+                                <th class="text-primary">
+                                    Country Issued
+                                </th>
+                                <th class="text-primary">
+                                    Actions
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model.DriverLicenses)
+                            {
+
+                                <tr class="tr-shadow">
+
+                                    <td>@Html.DisplayFor(modelItem => item.LicenseNumber)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Trn)</td>
+                                    <td>@item.DateIssued.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.ExpiryDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@Html.DisplayFor(modelItem => item.CountryIssued)</td>
+                                    <td>
+                                        <a style="font-size: 9px;" class="btn btn-success btn-sm " asp-action="Edit" asp-route-id="@item.LicenseNumber">Details</a>
+                                        @*<a style="font-size: 9px;" class="btn btn-success btn-sm " asp-action="Details" asp-route-id="@item.LicenseNumber">Details</a>*@
+
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END DATA TABLE -->
+    </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>

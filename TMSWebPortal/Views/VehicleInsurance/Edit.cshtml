@@ -1,0 +1,88 @@
+﻿@model TMSWebPortal.DTO.VehicleInsuranceDTO
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@*<button  class="">
+        <i asp-action="Create" asp-controller="Sermons" class="zmdi zmdi-plus"></i>Add Sermon
+    </button>*@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit" method="post">
+                <div class="card ">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Edit Vehicle Insurance</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="text-right">
+                            <a asp-action="Index" class="btn btn-outline-info btn-sm"><i class="glyphicon-hand-left"></i>&nbsp;Back</a>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <input asp-for="VehicleId" type="hidden" />
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Registration Number</label>
+                                            <input asp-for="RegistrationNumber" type="text" class="form-control" placeholder="Registration Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Issued By</label>
+                                            <input asp-for="IssuedBy" type="text" class="form-control" placeholder="Issued By">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" hidden>
+                                        <div class="form-group">
+                                            <label class="col-form-label">Expiry Date</label>
+                                            <input asp-for="ExpiryDate" type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group" hidden>
+                                            <label class="col-form-label">Date Effective</label>
+                                            <input asp-for="DateEffective" type="date" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- Default checked -->
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" asp-for="IsActive" class="custom-control-input" id="defaultChecked2" checked>
+                                            <label class="custom-control-label" for="defaultChecked2">Is Active</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-success btn-sm"><i class="material-icons">save</i>&nbsp;Save</button>
+                        <button asp-action="Index" class="btn btn-outline-danger btn-sm"><i class="material-icons">cancel</i>&nbsp;Cancel</button>
+                        <a asp-action="Delete" asp-route-Id="@Model.VehicleId" class="btn btn-outline-danger btn-sm"><i class="material-icons">delete</i>&nbsp;Delete</a>
+
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>

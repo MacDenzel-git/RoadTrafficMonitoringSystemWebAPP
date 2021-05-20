@@ -1,0 +1,83 @@
+﻿@model IEnumerable<TMSWebPortal.DTO.VehicleInsuranceDTO>
+
+ 
+
+@{
+    ViewData["Title"] = "ManageUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@*<button  class="">
+        <i asp-action="Create" asp-controller="Sermons" class="zmdi zmdi-plus"></i>Add Sermon
+    </button>*@
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Vehicles Insured</h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-right">
+                        <a class="btn btn-raised btn-success mb-2" asp-action="Create" asp-controller="VehicleInsurance">Add Insurance</a>
+                    </div>
+                    <table id="table_id" class="table dataTable">
+                        <thead class="text-primary">
+                            <tr>
+                                <th class="text-primary">
+                                    Registration Number
+                                </th>
+                                <th class="text-primary">
+                                    Date Effective
+                                </th>
+                                <th class="text-primary">
+                                    Is Active
+                                </th>
+                                <th class="text-primary">
+                                    Issued By
+                                </th>
+                                <th class="text-primary">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.RegistrationNumber)</td>
+                                    <td>@item.ExpiryDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.IssuedBy)</td>
+                                    <td>
+                                        @*<a style="font-size: 9px;" class="btn btn-success btn-sm " asp-action="Edit" asp-route-id="@item.VehicleId">Edit</a>*@
+                                        <a style="font-size: 9px;" class="btn btn-success btn-sm " asp-action="Edit" asp-route-id="@item.VehicleId">Details</a>
+                                        @*<a style="font-size: 9px;" class="btn btn-success btn-sm " asp-action="Delete" asp-route-id="@item.VehicleId">Delete</a>*@
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END DATA TABLE -->
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>

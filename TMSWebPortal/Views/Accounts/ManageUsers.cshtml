@@ -1,0 +1,159 @@
+﻿@model TMSWebPortal.DTO.UsersVM
+
+@{
+    ViewData["Title"] = "ManageUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@*<button  class="">
+        <i asp-action="Create" asp-controller="Sermons" class="zmdi zmdi-plus"></i>Add Sermon
+    </button>*@
+
+<section class="statistic">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="statistic__item">
+                        <h2 class="number">@Model.CrimesCount</h2>
+                        <span class="desc">Total Crimes Recorded</span>
+                        <div class="icon">
+                            <i class="fa fa-calculator"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="statistic__item">
+                        <h2 class="number">@Model.CrimesToday</h2>
+                        <span class="desc">Crimes Today</span>
+                        <div class="icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="statistic__item">
+                        <h2 class="number">@Model.Licenses</h2>
+                        <span class="desc">Licenses</span>
+                        <div class="icon">
+                            <i class="fa fa-drivers-license"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="statistic__item">
+                        <h2 class="number">@Model.VehiclesRegistered</h2>
+                        <span class="desc">Registered Vehicles</span>
+                        <div class="icon">
+                            <i class="fa fa-car"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div>
+    <!-- END STATISTIC-->
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Registered Users</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-right">
+                            <a class="btn btn-raised btn-success mb-2" asp-action="Register" asp-controller="Accounts">Add User</a>
+                        </div>
+                        <table id="table_id" class="display">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        Name
+                                    </th>
+                                
+                                    <th>
+                                        Phone Number
+                                    </th>
+                                    <th>
+                                        Email Address
+                                    </th>
+
+                                    <th>
+                                        Account Status
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.UserDetailDTOs)
+                                {
+
+                                    <tr class="tr-shadow">
+
+                                        <td> @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) </td>
+                                      
+
+                                        <td> @Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                                        <td>
+                                            <span class="status--process text-dark">@Html.DisplayFor(modelItem => item.EmailAddress)</span>
+                                        </td>
+
+                                        <td>
+                                            <form method="post">
+                                                @if (item.IsActive)
+                                                {
+                                                    <a class="btn btn-danger btn-sm" asp-controller="Accounts" asp-action="ChangeUserCredentialStatus" asp-route-personalDetailsId="@item.PersonalDetailsId" asp-route-roleId="@item.RoleId">Deactivate</a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btn btn-success btn-sm" asp-controller="Accounts" asp-action="ChangeUserCredentialStatus" asp-route-personalDetailsId="@item.PersonalDetailsId" asp-route-roleId="@item.RoleId">Activate</a>
+                                                }
+
+
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form method="get">
+                                                <a class="btn btn-success btn-sm" asp-controller="DriverLicense" asp-action="Create" asp-route-lastname="@item.LastName" asp-route-firstname="@item.FirstName" asp-route-personalDetailsId="@item.PersonalDetailsId">Create License</a>
+                                            </form>
+                                        </td>
+                                          
+                                         <td>
+                                             <a class="btn btn-success btn-sm" asp-controller="Accounts" asp-action="Edit"   asp-route-personalDetailsId="@item.PersonalDetailsId">Details</a>
+
+                                         </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END DATA TABLE -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+        });
+    </script>

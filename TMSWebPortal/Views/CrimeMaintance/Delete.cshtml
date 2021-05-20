@@ -1,0 +1,65 @@
+﻿@model TMSWebPortal.DTO.CrimeMantainainceDTO
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">List of Crimes</h4>
+            </div>
+            <div class="card-body">
+                <div class="text-right">
+                    <a class="btn btn-raised btn-success mb-2" asp-action="Create" asp-controller="CrimeMaintance">Add Crime</a>
+                </div>
+                <div>
+                    
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Crime Name:</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label>   @Html.DisplayFor(model => model.CrimeName)</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Charge :</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label> @Html.DisplayFor(model => model.Charge)</label>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Description:</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label>   @Html.DisplayFor(model => model.Description)</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <label class="text-primary"> Is Crime Active? :</label>
+                        </div>
+                        <div class="col-lg-3 text-left">
+                            <label> @Html.DisplayFor(model => model.IsActive)</label>
+                        </div>
+                        <br />
+                    </div>
+                    <form asp-action="Delete">
+                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        <a asp-action="Index">Back to List</a>
+                    </form>
+                </div>
+</div></div></div></div>

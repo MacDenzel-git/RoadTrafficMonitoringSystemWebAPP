@@ -1,0 +1,144 @@
+﻿@model TMSWebPortal.DTO.DriverLicenseDTO
+
+
+
+
+@{
+    ViewData["Title"] = "ManageUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@*<button  class="">
+        <i asp-action="Create" asp-controller="Sermons" class="zmdi zmdi-plus"></i>Add Sermon
+    </button>*@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <form asp-action="Create" method="post">
+                <div class="card card-profile">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Create New  Entry</h4>
+                    </div>
+                    <br />
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="card bg-light">
+                            <div class="card-body text-center pl-0 pr-0">
+                                <h5 class="card-title text-danger"><i class="fas fa-exclamation-circle"></i></h5>
+
+                                <div asp-validation-summary="All" class="h4-title text-danger">
+                                    <span>Please correct the following errors</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    }
+                    <div class="card-body">
+                        <p>Enter the Details and Click Save</p>
+                        <div class="text-right">
+                            <a asp-action="Index" class="btn btn-outline-info btn-sm"><i class="glyphicon-hand-left"></i>&nbsp;Back</a>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-md-12">
+                                <div class="row">
+
+                                    <input hidden asp-for="PersonId" type="text" class="form-control" placeholder="License Number" value="@Model.PersonId">
+
+                                    <div class="col-md-2 text-center">
+                                        <h6>License For:</h6>
+
+                                    </div>
+                                    <div class="col-md-3 text-center">
+
+                                        <h6 style="background-color: #003196;border-style: solid;color: white;border-color: #ff6e68;border-width: 2px;">@Model.PersonInfo</h6>
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label">First Issue Date</label>
+                                            <h6 required class="form-control">@Model.FirstIssue</h6>
+                                            <input hidden asp-for="FirstIssue" type="date" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" hidden>
+                                        <div class="form-group">
+                                            <label class="col-form-label">Date Issued</label>
+                                            <h6 required class="form-control">@Model.DateIssued</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <input required asp-for="ExpiryDate" type="date" class="hidden" hidden>
+                                     
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label">License Code</label>
+                                            <input required asp-for="LicenseCode" type="text" class="form-control" placeholder="License Code">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Vehicle Restriction</label>
+                                            <input required asp-for="VehicleRestriction" type="number" class="form-control" placeholder="Vehicle Restriction">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Issue Number</label>
+                                            <input required asp-for="IssueNumber" type="number" class="form-control" placeholder="Issue Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Driver Restriction</label>
+                                            <input required asp-for="DriverRestriction" type="text" class="form-control" placeholder="Driver Restriction">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-outline-success btn-sm"><i class="material-icons">save</i>&nbsp;Save</button>
+                <a asp-action="Index" class="btn btn-outline-danger btn-sm"><i class="material-icons">cancel</i>&nbsp;Cancel</a>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-1"></div>
+
+
+</div>
+ 
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>

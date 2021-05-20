@@ -1,0 +1,269 @@
+﻿@model TMSWebPortal.Models.GeneralFilter
+
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="~/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="~/demo/demo.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@*<button  class="">
+        <i asp-action="Create" asp-controller="Sermons" class="zmdi zmdi-plus"></i>Add Sermon
+    </button>*@
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="h4-title text-center font-weight-bold">Search Registration number</h4>
+                </div>
+                <form asp-action="GetVehicleDetails" asp-controller="VehicleInsurance">
+
+                    <div class="card-body ">
+
+                        <div class="form-group">
+                            <label class=" ">Enter Registration Number</label>
+                            <input asp-for="RegistrationNumber" type="tel" class="form-control" id="txtRegNum" required>
+                            <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" onclick="GetVehicle()" class="btn btn-success btn-raised btn-sm" data-toggle="modal" data-target="#vm">Search</button>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="modal fade" id="vm" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content" style="top: 42px;">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="warning">Is this the right registration number?, When you confirm Charges may apply.</p>
+                                        <input asp-for="RegistrationNumber" type="text" class="form-control" id="txtRegIdentifier" required disabled>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-raised btn-danger btn-sm mr-1">Search</button>
+                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+        <div class="col-lg-7">
+
+            <div class="card ">
+                <form asp-action="GetLicenseDetails" asp-controller="VehicleInsurance">
+                    <div class="card-header card-header-primary">
+                        <h4 class="h4-title text-center font-weight-bold pt-1">Search License number</h4>
+                    </div>
+                    <div class="card-body pt-0">
+
+                        <div class="row pt-2">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label class=" ">Enter Licence Number</label>
+                                    <input asp-for="LicenseNumber" type="text" class="form-control" id="txtLicense" required>
+                                    <span asp-validation-for="LicenseNumber" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-7">
+                                <div class="form-group">
+                                    <label class=" ">Enter Vehicle Registration number </label>
+                                    <input asp-for="RegistrationNumber" type="text" class="form-control" id="RN" required>
+                                    <span asp-validation-for="LicenseNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="text-center">
+                            <button type="button" onclick="GetLicense()" class="btn btn-success btn-raised btn-sm" data-toggle="modal" data-target="#myModal">Search</button>
+                        </div>
+
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content" style="top: 42px;">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <p>are theses datails correct?, When you confirm Charges may apply.</p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            License Number   <input asp-for="LicenseNumber" type="text" class="form-control" id="txtIdentifier" required disabled>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            Enter Vehicle Number plate<input asp-for="LicenseNumber" type="text" class="form-control" id="LicenseRN" required disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-raised btn-danger btn-sm mr-1">Search</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="h4-title text-center font-weight-bold">Charge for Specific Crimes</h4>
+                </div>
+                <form asp-action="ChargeForSpecific" asp-controller="Crimes">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-1"></div>
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <label class=" ">Enter Licence Number</label>
+                                            <input asp-for="LicenseNumber" type="text" class="form-control" id="txtLicense2" required>
+                                            <span asp-validation-for="LicenseNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <label class=" ">Enter Registration Number</label>
+                                            <input asp-for="RegistrationNumber" type="text" class="form-control" id="txtreg2" required>
+                                            <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-1">
+
+                                    </div>
+                                    <div class=" text-center m-0 p-0">
+                                        <label class="">Crime Committed</label>
+                                            <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+                                                <select class="js-select2" asp-for="CrimeName" id="RN2" required
+                                                        asp-items="@(new SelectList(Model.Crimes,"Description","Description"))"></select>
+                                                <div class="dropDownSelect2"></div>
+                                            </div>
+                                         
+                                    </div>
+                                    <div class="col-lg-4">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button" onclick="GetLicenseForCharge()" class="btn btn-success btn-raised btn-sm" data-toggle="modal" data-target="#myModal2">Charge</button>
+                        </div>
+                    </div>
+
+
+
+                    <div class="modal fade" id="myModal2" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content" style="top: 42px;">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <p>Charge Specific Crime</p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            License Number   <input asp-for="LicenseNumber" type="text" class="form-control" id="txtIdentifier2" required disabled>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            Reg Number   <input asp-for="RegistrationNumber" type="text" class="form-control" id="regno" required disabled>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            Crime <input asp-for="LicenseNumber" type="text" class="form-control" id="LicenseRN2" required disabled>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-raised btn-danger btn-sm mr-1">Charge</button>
+                                    <button type="button" class="btn btn-default btn-sm"  data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+</div>
+
+<script>
+    function GetLicense() {
+
+        document.getElementById("txtIdentifier").value = document.getElementById("txtLicense").value
+        document.getElementById("LicenseRN").value = document.getElementById("RN").value
+
+    }
+</script>
+
+<script>
+    function GetVehicle() {
+
+        document.getElementById("txtRegIdentifier").value = document.getElementById("txtRegNum").value
+    }
+</script>
+
+<script>
+    function GetLicenseForCharge() {
+
+        document.getElementById("txtIdentifier2").value = document.getElementById("txtLicense2").value
+        document.getElementById("LicenseRN2").value = document.getElementById("RN2").value
+        document.getElementById("regno").value = document.getElementById("txtreg2").value
+    }
+</script>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
